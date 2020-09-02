@@ -1,0 +1,33 @@
+<div class="container-fluid" style="padding: 50px;">
+
+  <div class="row">
+    <div class="col-sm-5">
+
+      <h1>Hi {{user}}</h1>
+
+    </div>
+  </div>
+
+  <div class="form-row text-center">
+    <div class="col-12">
+      <button type="submit" (click)="load()" class="btn btn-primary">Load Previous Chat</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="well" style="height:500px; width: 1000px; padding:15px; overflow-y: auto ;">
+      <div *ngFor="let item of chatArray">
+        <span><strong>{{item.user}} : </strong> {{item.message}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <input type="text" class="form-control" [(ngModel)]="messageText">
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-success " (click)="sendMessage()">Enter</button>
+    </div>
+  </div>
+
+</div>
