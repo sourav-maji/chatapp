@@ -25,14 +25,14 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      name: new FormControl('name', Validators.required),
-      email: new FormControl('email', Validators.required),
-      password: new FormControl('password', Validators.required),
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
     });
   }
   public onSubmit() {
     {
-      console.log('inside ts');
+      console.log('this is from sign up ');
       this.auth
         .signup(
           this.signupForm.get('name').value,
@@ -45,11 +45,15 @@ export class SignupComponent implements OnInit {
             this.success_message = 'User Created Successfully';
             this.email = null;
             this.password = null;
+            alert('User Created Sucesfully');
             this.router.navigateByUrl('/login');
 
             this.name = null;
           },
-          (err) => (this.error_message = 'Could not create user')
+          (err) => {
+            alert('Please Enter Valid Email & Password of 5 digits ');
+            this.error_message = 'Could not create user';
+          }
         );
     }
   }

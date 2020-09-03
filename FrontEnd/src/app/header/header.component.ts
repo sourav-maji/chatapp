@@ -6,21 +6,23 @@ import { ChatService } from '../chat.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    private chat: ChatService
+  ) {}
 
-  constructor(public auth:AuthService,private router:Router ,private chat:ChatService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logout() {
     console.log('logout');
     this.chat.userLeftRoom();
 
     this.auth.logout();
+    alert('Log Out Sucessfully');
     this.router.navigate(['login']);
   }
-
 }

@@ -59,6 +59,7 @@ export class ChatComponent implements OnInit {
     // this._chatService.getmessage().subscribe(data=>this.messageArray.push(data) );
 
     console.log(this.chatArray);
+    this.load();
 
     this.user = localStorage.getItem('name');
     this._chatService.joinRoom({ user: this.user });
