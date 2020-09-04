@@ -10,16 +10,23 @@
   <div class="row">
     <div class="well" style="height:500px; width: 1000px; padding:15px; overflow-y: auto ;">
       <div *ngFor="let item of chatArray">
-        <span><strong>{{item.user}} : </strong> {{item.message}}</span>
+        <div *ngIf="user===item.user">
+          <span style="float: right;color: green;"><strong>{{item.message}}: </strong> {{item.user}} </span><br>
+        </div>
+        <div *ngIf="user!==item.user">
+          <span style="float: left;"><strong> {{item.user}}: </strong> {{item.message}}</span>
+          <br>
+        </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-10">
-      <input type="text" class="form-control" [(ngModel)]="messageText">
+      <input type="text" class="form-control" [(ngModel)]="messageText" required>
     </div>
     <div class="col-sm-2">
-      <button type="button" class="btn btn-success " (click)="sendMessage()">Enter</button>
+      <button type="button" class="btn btn-success " (click)="sendMessage()"
+        [disabled]='!messageText|| messageText[0] ===" "'>Enter</button>
     </div>
   </div>
 

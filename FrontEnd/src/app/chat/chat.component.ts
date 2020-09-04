@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
 
   user: String;
 
-  messageText: String;
+  messageText: String = '';
   chatArray: Array<{ user: String; message: String }> = [];
 
   constructor(private _chatService: ChatService, private http: HttpClient) {
